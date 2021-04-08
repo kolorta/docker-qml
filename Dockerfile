@@ -5,7 +5,13 @@ RUN apt-get update && yes | apt-get upgrade
 
 RUN apt-get install -y gcc git 
 
-RUN pip install qiskit jupyter pandas numpy matplotlib pylatexenc
+COPY requirements.txt /opt/app/requirements.txt
+
+WORKDIR /opt/app
+
+RUN pip install -r requirements.txt
+
+# RUN pip install qiskit jupyter pandas numpy matplotlib pylatexenc
 
 WORKDIR /notebooks/
 
